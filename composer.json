@@ -15,7 +15,15 @@
     },
     "autoload": {
         "psr-4": {
-            "Modal\\Package\\": "src/app/"
+            "ModelsPackage\\Laravel\\Product\\": "src/product/src/app/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ModelsPackage\\Laravel\\Product\\Providers\\ProductServiceProvider"
+
+            ]
         }
     }
 }

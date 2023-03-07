@@ -1,0 +1,22 @@
+{
+    "name": "modal/package",
+    "description": "The Modal Package",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Bui Duc Thien",
+            "email": "buithien160@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0.0",
+        "illuminate/support": "^7.0|^8.0",
+        "illuminate/database": "^8.83"
+        
+    },
+    "autoload": {
+        "psr-4": {
+            "Modal\\Package\\": "src/app/"
+        }
+    }
+}

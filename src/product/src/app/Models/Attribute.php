@@ -5,14 +5,14 @@ namespace ModelsPackage\Laravel\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Size extends Model
 {
     protected $fillable = [
         'name',
-        'description',
-        'price',
-        'image_path'
+        'product_id',
+        'size_id',
     ];
+
 
     public function attributes()
     {

@@ -5,8 +5,10 @@ namespace ModelsPackage\Laravel\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Size extends Model
+class SizeProduct extends Model
 {
+    protected $table = 'product_size';
+
     protected $fillable = [
         'name',
         'product_id',
@@ -14,8 +16,5 @@ class Size extends Model
     ];
 
 
-    public function attributes()
-    {
-        return $this->belongsToMany(Attribute::class, 'attribute_product');
-    }
+
 }

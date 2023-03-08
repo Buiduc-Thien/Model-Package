@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $table = 'products';
     protected $fillable = [
         'name',
         'description',
@@ -14,8 +15,16 @@ class Product extends Model
         'image_path'
     ];
 
-    public function attributes()
+    // Lấy ra size của sản phẩm
+    public function sizes()
     {
-        return $this->belongsToMany(Attribute::class, 'attribute_product');
+        return $this->belongsToMany(Size::class, 'product_size');
+    }
+
+    public function getProductBySizeName($sizeName)
+    {
+        $products = Product::with('sizes')->whereHas('sizes', function ($query) use ($sizeName) {
+            $query->where('name', $sizeName);
+        })->get();
     }
 }

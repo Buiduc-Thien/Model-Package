@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -17,7 +17,8 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->decimal('price', 10, 2);
+            $table->bigInteger('current_price');
+            $table->bigInteger('old_price');
             $table->string('image_path')->nullable();
             $table->timestamps();
         });
@@ -32,4 +33,5 @@ class CreateProductsTable extends Migration
     {
         Schema::dropIfExists('products');
     }
-}
+};
+

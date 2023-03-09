@@ -21,10 +21,5 @@ class Product extends Model
         return $this->belongsToMany(Size::class, 'product_size');
     }
 
-    public function getProductBySizeName($sizeName)
-    {
-        $products = Product::with('sizes')->whereHas('sizes', function ($query) use ($sizeName) {
-            $query->where('name', $sizeName);
-        })->get();
-    }
+
 }

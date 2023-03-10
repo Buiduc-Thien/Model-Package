@@ -5,6 +5,7 @@ namespace ModelsPackage\Laravel\Product\Http\Controllers\Api\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use ModelsPackage\Laravel\Models\Product;
+use ModelsPackage\Laravel\Models\Size;
 
 class ProductController extends Controller
 {
@@ -12,6 +13,12 @@ class ProductController extends Controller
     {
         $products = Product::with('sizes')->get();
         return response()->json($products);
+    }
+
+    public function getSizes()
+    {
+        $sizes = Size::get();
+        return response()->json($sizes);
     }
     public function getProductBySizeName($sizeName)
     {
@@ -32,7 +39,6 @@ class ProductController extends Controller
 
         $product->sizes()->attach($data['sizes']);
 
-        // return $data;
         return response()->json([
             'success' => true,
             'message' => $data['name'],

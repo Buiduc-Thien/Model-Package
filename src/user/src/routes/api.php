@@ -1,7 +1,8 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
-use ModelsPackage\Laravel\Product\Http\Controllers\Api\Admin\ProductController;
+use ModelsPackage\Laravel\User\Http\Controllers\Api\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,5 @@ use ModelsPackage\Laravel\Product\Http\Controllers\Api\Admin\ProductController;
 */
 
 Route::group(['prefix' => 'api'], function () {
-    Route::get('/admin/products/{sizeName}', [ProductController::class, 'getProductBySizeName']);
-    Route::get('/admin/products', [ProductController::class, 'getProducts']);
-    Route::get('/admin/sizes', [ProductController::class, 'getSizes']);
-    Route::post('/admin/products/create', [ProductController::class, 'createProduct']);
+    Route::get('/register', [UserController::class, 'test']);
 });

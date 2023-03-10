@@ -16,5 +16,5 @@ use ModelsPackage\Laravel\User\Http\Controllers\Api\Admin\UserController;
 */
 
 Route::group(['prefix' => 'api'], function () {
-    Route::get('/register', [UserController::class, 'test']);
+    Route::post('/register', [UserController::class, 'register']);
 });

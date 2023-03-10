@@ -15,7 +15,8 @@
   "autoload": {
     "psr-4": {
       "ModelsPackage\\Laravel\\Product\\": "src/product/src/app/",
-      "ModelsPackage\\Laravel\\User\\": "src/user/src/app/"
+      "ModelsPackage\\Laravel\\User\\": "src/user/src/app/",
+      "ModelsPackage\\Laravel\\Models\\": "src/models/"
     }
   },
   "extra": {

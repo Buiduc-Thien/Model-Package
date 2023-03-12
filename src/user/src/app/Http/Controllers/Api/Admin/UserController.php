@@ -4,36 +4,30 @@ namespace ModelsPackage\Laravel\User\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use ModelsPackage\Laravel\Models\User;
 
 class UserController extends Controller
 {
     public function register(Request $request)
     {
-        // Validate the input
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
+        $validatedData = $request->validate([
+            'email' => 'required|unique:users,email',
+            'password' => 'required|min:8',
+            'password_confirmation' => 'required|same:password',
         ]);
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
-        }
-
-        // Create a new user
+        // create new user
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']),
         ]);
 
-        // Generate a new API token for the user
-        $token = $user->createToken('API Token')->plainTextToken;
-
-        // Return a response with the token
-        return response()->json(['token' => $token], 201);
+        // return response
+        return response()->json([
+            'success' => true,
+            'data' => 'Tạo tài khoản thành công!',
+        ]);
     }
 
 }

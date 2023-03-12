@@ -36,8 +36,9 @@ class ProductController extends Controller
         $product->name = $data['name'];
         $product->description = $data['description'];
         $product->save();
-
-        $product->sizes()->attach($data['sizes']);
+        if($data['sizes']){
+            $product->sizes()->attach($data['sizes']);
+        }
 
         return response()->json([
             'success' => true,
